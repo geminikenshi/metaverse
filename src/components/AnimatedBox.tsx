@@ -7,7 +7,6 @@ export default function AnimatedBox() {
   useFrame(() => {
     // console.log("animated");
     meshRef.current?.rotateX(0.02);
-    meshRef.current?.rotateY(0.02);
   });
 
   return (
