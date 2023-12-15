@@ -1,7 +1,6 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import AnimatedBox from "./components/AnimatedBox";
-import CameraOrbitController from "./components/CameraOrbitController";
 import { OrbitControls, Stats } from "@react-three/drei";
 
 function App() {
