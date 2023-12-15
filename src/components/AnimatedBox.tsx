@@ -1,8 +1,17 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useHelper } from "@react-three/drei";
+import { BoxHelper } from "three";
 
-export default function AnimatedBox() {
-  const meshRef = useRef<THREE.Mesh>(null);
+type Props = {
+  isTesting: boolean;
+};
+
+const AnimatedBox: React.FC<Props> = ({ isTesting }) => {
+  const meshRef = useRef<THREE.Mesh>();
+  {
+    isTesting && useHelper(meshRef, BoxHelper, "brown");
+  }
 
   useFrame(() => {
     // console.log("animated");
@@ -11,8 +20,10 @@ export default function AnimatedBox() {
 
   return (
     <mesh scale={[0.5, 0.5, 0.5]} ref={meshRef}>
-      <boxGeometry args={[2, 3, 2]} />
+      <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial />
     </mesh>
   );
-}
+};
+
+export default AnimatedBox;
