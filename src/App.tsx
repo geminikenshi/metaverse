@@ -1,7 +1,8 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
-import Ground from "./components/Ground/Ground";
+import Ground from "./components/Ground";
+import Light from "./components/Light";
 
 const TexturedSpheres = () => {
   const map = useTexture(
@@ -15,7 +16,7 @@ const TexturedSpheres = () => {
   );
 
   return (
-    <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]}>
+    <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
       <sphereGeometry />
       <meshStandardMaterial
         map={map}
@@ -31,17 +32,17 @@ function App() {
 
   return (
     <div className="container">
-      <Canvas>
+      <Canvas shadows>
         {testing && <Stats />}
         {testing && <axesHelper args={[2]} />}
         {testing && <gridHelper args={[10, 10]} />}
 
         <OrbitControls />
-        <ambientLight intensity={0.1} />
-        <directionalLight color="Cyan" position={[0, 5, 5]} />
+
         <TexturedSpheres />
 
         <Ground />
+        <Light />
       </Canvas>
     </div>
   );
