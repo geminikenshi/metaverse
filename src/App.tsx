@@ -1,8 +1,21 @@
 import "./App.css";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
 import Ground from "./components/Ground";
 import Light from "./components/Light";
+import { GLTFLoader } from "three/examples/jsm/Addons.js";
+
+const Bamboo = () => {
+  const model = useLoader(GLTFLoader, "./models/bamboo.glb");
+
+  model.scene.traverse((obj) => {
+    if (obj.isMesh) {
+      obj.castShadow = true;
+    }
+  });
+
+  return <primitive object={model.scene} />;
+};
 
 const TexturedSpheres = () => {
   const map = useTexture(
@@ -40,6 +53,7 @@ function App() {
         <OrbitControls />
 
         <TexturedSpheres />
+        <Bamboo />
 
         <Ground />
         <Light />
