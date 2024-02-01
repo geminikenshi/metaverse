@@ -3,7 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stats } from "@react-three/drei";
 import Ground from "./components/Ground";
 import Light from "./components/Light";
-import Bamboo from "./components/Bamboo";
+import Bamboos from "./components/Bamboos";
+import AnimatedBox from "./components/AnimatedBox";
+import TexturedSpheres from "./components/texturedSphere";
 
 function App() {
   const testing = true;
@@ -17,8 +19,10 @@ function App() {
 
         <OrbitControls />
 
-        <Bamboo />
-        <Bamboo />
+        <Bamboos boundary={50} count={20} />
+
+        <AnimatedBox isTesting position={[-5, 2, 0]} />
+        <TexturedSpheres />
 
         <Ground />
         <Light />

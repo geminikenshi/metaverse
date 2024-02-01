@@ -12,7 +12,7 @@ const TexturedSpheres = () => {
   );
 
   return (
-    <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
+    <mesh scale={[0.5, 0.5, 0.5]} position={[-3, 1, 3]} castShadow>
       <sphereGeometry />
       <meshStandardMaterial
         map={map}

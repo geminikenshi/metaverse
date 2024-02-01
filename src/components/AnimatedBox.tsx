@@ -1,13 +1,14 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useHelper } from "@react-three/drei";
-import { BoxHelper } from "three";
+import { BoxHelper, Vector3 } from "three";
 
 type Props = {
   isTesting: boolean;
+  position: Vector3;
 };
 
-const AnimatedBox: React.FC<Props> = ({ isTesting }) => {
+const AnimatedBox: React.FC<Props> = ({ isTesting, position }) => {
   const meshRef = useRef<THREE.Mesh>();
   {
     isTesting && useHelper(meshRef, BoxHelper, "brown");
@@ -19,7 +20,7 @@ const AnimatedBox: React.FC<Props> = ({ isTesting }) => {
   });
 
   return (
-    <mesh scale={[0.5, 0.5, 0.5]} ref={meshRef}>
+    <mesh position={position} scale={[0.5, 0.5, 0.5]} ref={meshRef}>
       <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial />
     </mesh>
